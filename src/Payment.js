@@ -43,6 +43,8 @@ function Payment() {
     [basket]
   );
 
+  console.log("THE SECRET IS >>>", clientSecret);
+
   const handleSubmit = async event => {
     // Giving handle sumbit an event, and if that is event is in play, we do the stuff in the brackets.
 
@@ -58,12 +60,29 @@ function Payment() {
         }
       })
       .then(({ paymentIntent }) => {
-        // paymenyIntent = paymeny confirmation
+        // paymentIntent = payment confirmation
+
+        // NOSQL Databse
+        db
+          .collection("users")
+          .doc(user?.uid)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket, // Basket Items
+            amount: paymentIntent.amount, // Amount
+            created: paymentIntent.created // Time Stamp for Order
+          });
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
 
-        history.repalce("/orders"); // Pushing user to order confirmation page after successfull transaction. Using 'replace' instead of 'push' as we don't want user to be able to go back to payment page.
+        dispatch({
+          type: "EMPTY_BASKET"
+        });
+
+        history.replace("/orders"); // Pushing user to order confirmation page after successfull transaction. Using 'replace' instead of 'push' as we don't want user to be able to go back to payment page.
       });
   };
 
@@ -135,7 +154,7 @@ function Payment() {
                   prefix={"$"}
                 />
                 <button disabled={processing || disabled || succeeded}>
-                  <span>{processing ? <p>Processing</p> : "Buy Now"}</span>{" "}
+                  <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                   {/* When order is processing, it will show "processing" and buy now button will be disables, otherwise it will say Buy Now. */}
                 </button>
               </div>
