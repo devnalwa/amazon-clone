@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+This Amazon Clone is a fully functioning web application with e-commerce functionality and is deployed with Firebase. You can find it here: https://clone-f2299.web.app/ 
+
 ## Available Scripts
 
 In the project directory, you can run:
