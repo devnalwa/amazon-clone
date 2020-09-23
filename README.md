@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This Amazon Clone is a fully functioning e-commerce web application, built using React and is deployed with Firebase. Payments are handled by Stripe. To use a fake card in order to make a purchase, keep repeatedly typing 42 in all the card details field. You can find the website here: https://clone-f2299.web.app/ 
+This Amazon Clone is a fully functioning e-commerce web application, built using React for the front-end and Node and Express for the back-end. Authentication and the Database is taken care of by Firebase with the app also being deployed on Firebase itself. Payment functionality is there as well and is handled by the integration of Stripe. To use a fake card in order to make a purchase, keep repeatedly typing 42 in all the card details field. You can find the website here: https://clone-f2299.web.app/ 
 
 ## Available Scripts
 
